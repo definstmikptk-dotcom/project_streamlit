@@ -1,0 +1,18 @@
+<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dashboard Statistik Deskriptif</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script></head><body><div class="w">
+<h1>📊 Dashboard Statistik Deskriptif</h1><p class="sub">Analisis Data Mahasiswa - latihan1.csv</p>
+<div class="kpis" id="kpis"></div>
+<div class="grid">
+ <div class="c"><h2>Distribusi Gender</h2><div class="cv"><canvas id="gen"></canvas></div></div>
+ <div class="c"><h2>Distribusi Kepuasan</h2><div class="cv"><canvas id="sat"></canvas></div></div>
+ <div class="c full"><h2><span>Jelajahi Satu Variabel</span><select id="v1"></select></h2>
+  <div class="two"><div class="cv"><canvas id="hist"></canvas></div><div><div class="stats" id="stats"></div><span class="tag" id="tag"></span></div></div></div>
+ <div class="c"><h2>Rata-rata Nilai per Usia</h2><div class="cv"><canvas id="age"></canvas></div></div>
+ <div class="c"><h2>Korelasi dengan Exam Score</h2><div class="cv"><canvas id="cor"></canvas></div></div>
+ <div class="c full"><h2><span>Hubungan Dua Variabel</span><span><select id="sx"></select> vs <select id="sy"></select></span></h2><div class="cv tall"><canvas id="sc"></canvas></div><p class="cap" id="scn"></p></div>
+ <div class="c full"><h2>Ringkasan Statistik Deskriptif</h2><div class="tw"><table id="tb"></table></div></div>
+ <div class="c full"><h2>Perbandingan Gender (Rata-rata)</h2><div class="tw"><table id="gt"></table></div></div>
+ <div class="c full"><h2>💡 Keputusan yang Dapat Diambil dari Data</h2><div class="dec" id="dec"></div></div>
+</div></div><script src="{{ url_for('static', filename='app.js') }}"></script></body></html>
