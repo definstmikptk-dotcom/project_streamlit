@@ -2,22 +2,22 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
-Konfigurasi halaman
+#Konfigurasi halaman
 st.set_page_config(page_title="Dashboard Statistik Deskriptif", layout="wide")
 st.title("📊 Dashboard Statistik Deskriptif")
 
-Baca Data
+#Baca Data
 try:
     df = pd.read_csv("latihan1.csv")
 except FileNotFoundError:
     st.error("File 'latihan1.csv' tidak ditemukan. Pastikan file sudah di-upload ke repositori GitHub.")
     st.stop()
 
-Tentukan Kolom Numerik
-(Mengabaikan kolom 'Student_ID' dan 'Gender' seperti di kode Flask Anda)
+#Tentukan Kolom Numerik
+#(Mengabaikan kolom 'Student_ID' dan 'Gender' seperti di kode Flask Anda)
 NUM = [c for c in df.columns if c not in ("Student_ID", "Gender")]
 
-Fungsi Statistik (Logika dari kode Flask Anda)
+#Fungsi Statistik (Logika dari kode Flask Anda)
 def hitung_statistik(s):
     q1, q3 = s.quantile([.25, .75])
     iqr = q3 - q1
@@ -38,18 +38,18 @@ def hitung_statistik(s):
         "Outlier": ((s < q1 - 1.5 * iqr) | (s > q3 + 1.5 * iqr)).sum()
     }
 
-Hitung untuk Semua Kolom Numerik
+#Hitung untuk Semua Kolom Numerik
 hasil = {}
 for col in NUM:
     hasil[col] = hitung_statistik(df[col])
 
-Tampilkan dalam DataFrame
+#Tampilkan dalam DataFrame
 df_hasil = pd.DataFrame(hasil).T
 df_hasil = df_hasil.round(2)  # Bulatkan 2 desimal
 
 st.subheader("📈 Ringkasan Statistik")
 st.dataframe(df_hasil, use_container_width=True)
 
-(Opsional) Tampilkan Data Mentah
+#(Opsional) Tampilkan Data Mentah
 with st.expander("🔍 Lihat Data Mentah"):
     st.dataframe(df, use_container_width=True)
