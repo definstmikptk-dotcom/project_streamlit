@@ -2,7 +2,7 @@ import numpy as np, pandas as pd
 from flask import Flask, jsonify, render_template
 
 app = Flask(__name__)
-df = pd.read_csv("data/latihan1.csv")
+df = pd.read_csv("latihan1.csv")
 NUM = [c for c in df.columns if c not in ("Student_ID", "Gender")]
 
 
